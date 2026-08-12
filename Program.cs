@@ -1,6 +1,8 @@
 ﻿using System;
 
-string menu = "\nMenú:\n1. Suma\n2. Resta\n3. Multiplicación\n4. División\n5. Salir";
+string menu = "\nMenú:\n1. Sumar\n2. Restar\n3. Multiplicar\n4. Dividir\n5. Salir";
+
+Calculadora calculadora = new Calculadora();
 
 while (true)
 {
@@ -11,20 +13,65 @@ while (true)
     switch (opcion)
     {
         case 1:
-            RealizarSuma();
+            Console.Write("Ingresa el primer número: ");
+            double numero1 = ObtenerNumero();
+
+            Console.Write("Ingresa el segundo número: ");
+            double numero2 = ObtenerNumero();
+
+            double resultadoSuma = calculadora.Sumar(numero1, numero2);
+
+            Console.WriteLine($"El resultado de la suma es: {resultadoSuma}");
             break;
+
         case 2:
-            RealizarResta();
+            Console.Write("Ingresa el primer número: ");
+            numero1 = ObtenerNumero();
+
+            Console.Write("Ingresa el segundo número: ");
+            numero2 = ObtenerNumero();
+
+            double resultadoResta = calculadora.Restar(numero1, numero2);
+
+            Console.WriteLine($"El resultado de la resta es: {resultadoResta}");
             break;
+
         case 3:
-            RealizarMultiplicacion();
+            Console.Write("Ingresa el primer número: ");
+            numero1 = ObtenerNumero();
+
+            Console.Write("Ingresa el segundo número: ");
+            numero2 = ObtenerNumero();
+
+            double resultadoMultiplicacion = calculadora.Multiplicar(numero1, numero2);
+
+            Console.WriteLine($"El resultado de la multiplicación es: {resultadoMultiplicacion}");
             break;
+
         case 4:
-            RealizarDivision();
+            Console.Write("Ingresa el primer número: ");
+            numero1 = ObtenerNumero();
+
+            Console.Write("Ingresa el segundo número: ");
+            numero2 = ObtenerNumero();
+
+            try
+            {
+                double resultadoDivision = calculadora.Dividir(numero1, numero2);
+
+                Console.WriteLine($"El resultado de la división es: {resultadoDivision}");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
             break;
+
         case 5:
             Console.WriteLine("Gracias por usar la Calculadora C#");
             return;
+
         default:
             Console.WriteLine("Opción inválida. Por favor, elige una opción válida.");
             break;
@@ -43,54 +90,6 @@ static int ObtenerOpcion()
         {
             return opcion;
         }
-    }
-}
-
-static void RealizarSuma()
-{
-    Console.Write("Ingresa el primer número: ");
-    double num1 = ObtenerNumero();
-    Console.Write("Ingresa el segundo número: ");
-    double num2 = ObtenerNumero();
-    double resultado = num1 + num2;
-    Console.WriteLine($"El resultado de la suma es: {resultado}");
-}
-
-static void RealizarResta()
-{
-    Console.Write("Ingresa el primer número: ");
-    double num1 = ObtenerNumero();
-    Console.Write("Ingresa el segundo número: ");
-    double num2 = ObtenerNumero();
-    double resultado = num1 - num2;
-    Console.WriteLine($"El resultado de la resta es: {resultado}");
-}
-
-static void RealizarMultiplicacion()
-{
-    Console.Write("Ingresa el primer número: ");
-    double num1 = ObtenerNumero();
-    Console.Write("Ingresa el segundo número: ");
-    double num2 = ObtenerNumero();
-    double resultado = num1 * num2;
-    Console.WriteLine($"El resultado de la multiplicación es: {resultado}");
-}
-
-static void RealizarDivision()
-{
-    Console.Write("Ingresa el primer número: ");
-    double num1 = ObtenerNumero();
-    Console.Write("Ingresa el segundo número: ");
-    double num2 = ObtenerNumero();
-
-    if (num2 == 0)
-    {
-        Console.WriteLine("Error: No se puede dividir entre cero.");
-    }
-    else
-    {
-        double resultado = num1 / num2;
-        Console.WriteLine($"El resultado de la división es: {resultado}");
     }
 }
 
