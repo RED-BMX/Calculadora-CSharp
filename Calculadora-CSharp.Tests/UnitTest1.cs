@@ -2,44 +2,72 @@ namespace Calculadora_CSharp.Tests;
 
 public class UnitTest1
 {
-    [Fact]
-    public void Sumar_DosNumeros_DebeRetornarLaSuma()
+    [Theory]
+    [InlineData(5, 3, 8)]
+    [InlineData(10, 20, 30)]
+    [InlineData(-5, 3, -2)]
+    [InlineData(0, 10, 10)]
+    public void Sumar_DosNumeros_DebeRetornarLaSuma(
+        double numero1,
+        double numero2,
+        double esperado)
     {
-        Calculadora calculadora = new Calculadora();
+        var calculadora = new Calculadora();
 
-        double resultado = calculadora.Sumar(5, 3);
+        double resultado = calculadora.Sumar(numero1, numero2);
 
-        Assert.Equal(8, resultado);
+        Assert.Equal(esperado, resultado);
     }
 
-    [Fact]
-    public void Restar_DosNumeros_DebeRetornarLaResta()
+    [Theory]
+    [InlineData(10, 4, 6)]
+    [InlineData(20, 5, 15)]
+    [InlineData(5, 10, -5)]
+    [InlineData(0, 8, -8)]
+    public void Restar_DosNumeros_DebeRetornarLaResta(
+        double numero1,
+        double numero2,
+        double esperado)
     {
-        Calculadora calculadora = new Calculadora();
+        var calculadora = new Calculadora();
 
-        double resultado = calculadora.Restar(10, 4);
+        double resultado = calculadora.Restar(numero1, numero2);
 
-        Assert.Equal(6, resultado);
+        Assert.Equal(esperado, resultado);
     }
 
-    [Fact]
-    public void Multiplicar_DosNumeros_DebeRetornarElProducto()
+    [Theory]
+    [InlineData(5, 4, 20)]
+    [InlineData(10, 3, 30)]
+    [InlineData(0, 100, 0)]
+    [InlineData(-5, 4, -20)]
+    public void Multiplicar_DosNumeros_DebeRetornarElProducto(
+        double numero1,
+        double numero2,
+        double esperado)
     {
-        Calculadora calculadora = new Calculadora();
+        var calculadora = new Calculadora();
 
-        double resultado = calculadora.Multiplicar(5, 4);
+        double resultado = calculadora.Multiplicar(numero1, numero2);
 
-        Assert.Equal(20, resultado);
+        Assert.Equal(esperado, resultado);
     }
 
-    [Fact]
-    public void Dividir_DosNumeros_DebeRetornarElResultado()
+    [Theory]
+    [InlineData(10, 2, 5)]
+    [InlineData(20, 4, 5)]
+    [InlineData(9, 3, 3)]
+    [InlineData(-10, 2, -5)]
+    public void Dividir_DosNumeros_DebeRetornarElResultado(
+        double numero1,
+        double numero2,
+        double esperado)
     {
-        Calculadora calculadora = new Calculadora();
+        var calculadora = new Calculadora();
 
-        double resultado = calculadora.Dividir(10, 2);
+        double resultado = calculadora.Dividir(numero1, numero2);
 
-        Assert.Equal(5, resultado);
+        Assert.Equal(esperado, resultado);
     }
 
     [Fact]
